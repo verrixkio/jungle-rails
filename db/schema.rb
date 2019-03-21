@@ -53,6 +53,11 @@ ActiveRecord::Schema.define(version: 20160625062916) do
     t.datetime "updated_at",  null: false
     t.integer  "category_id"
   end
+  
+  # users table
+  create_table "users", force: :cascade do |t|
+    t.string   "name"
+  end
 
   add_index "products", ["category_id"], name: "index_products_on_category_id", using: :btree
 
