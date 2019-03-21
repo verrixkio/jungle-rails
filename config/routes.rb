@@ -19,7 +19,7 @@ Rails.application.routes.draw do
 
   namespace :user do
     root to: 'users#login'
-    resources :login, :register, except: [:edit, :update, :show]
+    resources :login, :register, except: [:update, :show]
   end
   
   # The priority is based upon order of creation: first created -> highest priority.
