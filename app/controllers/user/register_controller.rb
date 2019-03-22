@@ -4,18 +4,21 @@ class User::RegisterController < ApplicationController
   end
   
   def new
-    @user= User.new
+    user= User.new
   end
 
   def create
-    @user = User.new(category_params)
-
-    if @user.save
-      redirect_to '/', notice: 'Registered!'
+    user = User.new(category_params)
+    if user.save
+      session[:user_id] = user.id
+      redirect_to '/'
     else
-      render :new
+      redirect_to '/signup'
     end
   end
+  
+  private
+  
   def category_params
     params.require(:user).permit(
       :name,
